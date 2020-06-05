@@ -155,38 +155,36 @@ $(document).ready(
 				addEmployee();
 			}
 			)
-
-//Declare addEmloyee Function in detail
-function addEmployee()
-{
-	$.ajax({
-		type:'POST',
-		contentType: 'application/json',
-		url: 'http://localhost:9090/apii/addemployeehb1',
-		dataType: "json",
-		data: formToJSON()
-	})
-};
-//Function to serialize the field to JSON string	
-function formToJSON() {
-return JSON.stringify
-	(
-			{
-				"name": $('#name').val(), 
-				"phoneno": $('#phoneno').val(), 
-				"department": $('#department').val(), 
-				"status": $('#status').val(),
-				"createddtm": $('#createddt').val(), 
-				"createdby": $('#createdby').val(), 
-				"updateddtm": $('#updateddt').val(), 
-				"updatedby": $('#updatedby').val(), 
-				"cid": $('#cid').val(), 
-				"cname": $('#cname').val()
-		}
-	)
-};
-
-		});
+ 
+			function addEmployee()
+					{
+						$.ajax({
+								type:'POST',
+								contentType: 'application/json',
+								url: 'http://localhost:9090/apii/addemployeehb1',
+								dataType: "json",
+								data: formToJSON()
+								})
+					};
+	function formToJSON() 
+	{
+			return JSON.stringify(
+									{
+										"name": $('#name').val(), 
+										"phoneno": $('#phoneno').val(), 
+										"department": $('#department').val(), 
+										"status": $('#status').val(),
+										"createddtm": $('#createddt').val(), 
+										"createdby": $('#createdby').val(), 
+										"updateddtm": $('#updateddt').val(), 
+										"updatedby": $('#updatedby').val(), 
+										"cid": $('#cid').val(), 
+										"cname": $('#cname').val()
+									}
+								)
+	};
+	
+});
 //Add country
 
 $(document).ready(
@@ -225,20 +223,21 @@ function formToJSON() {
 
 //delete
 $(document).ready(
-		function() {
-$('#Countrytobedeletdbyname').click(function() {
-	var cname = $("#cname").val();
+		          function() {
+                             $('#Countrytobedeletdbyname').click(function() 
+                            		 {
+                            	 		var cname = $("#cname").val();
+                            	 		$.ajax({
+                            	 				type: 'DELETE',
+                            	 				contentType: 'application/json',
+                            	 				url: 'http://localhost:9090/apii/deletebycountrynamehb1/'+cname,
+                            	 				dataType: "json",
+                            	 				data: formToJSONCountryUpdate(),
+                            	 				})
+                                    })
 	
-	$.ajax({
-		type: 'DELETE',
-		contentType: 'application/json',
-		url: 'http://localhost:9090/apii/deletebycountrynamehb1/'+cname,
-		dataType: "json",
-		data: formToJSONCountryUpdate(),
-	})
-})
-	
-});
+		          			}
+		          );
 
 
 		
