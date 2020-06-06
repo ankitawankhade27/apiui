@@ -69,8 +69,18 @@ $('#showAllEmployee').click(function() {
 			function(data) {
 				$.each(data,function(index,employee) {
 								$('#empList').append(
-									'<li>'+employee.id+' '+ employee.name+' '+employee.phoneno+' '+employee.department+' '+employee.status+' '
-									+ employee.createddtm+' '+employee.createdby+' '+employee.updateddtm+ ' '+employee.updatedby+'</li>');
+														'<li>'
+															+employee.id+' '
+															+employee.name+' '
+															+employee.phoneno+' '
+															+employee.department+' '
+															+employee.status+' '
+															+employee.createddtm+' '
+															+employee.createdby+' '
+															+employee.updateddtm+ ' '
+															+employee.updatedby+
+														'</li>'
+													);
 						});
 
 			});
@@ -80,20 +90,26 @@ $('#showAllEmployee').click(function() {
 
 //Show all employee of Status=active,inactive and suspended
 $(document).ready(
-		function() {
-$('#showAllEmployeebyStatus').click(function() {
-	var status = $("#status").val();
-	
-		$.ajax({
-			url :"http://localhost:9090/apii/statushb1/"+status
-		}).then(
-		function(data) {			
-			
-			$.each(data,
-					function(index,employee) {
-							$('#empListbyStatus').append(
-									'<li>'+employee.id+' '+ employee.name+' '+employee.phoneno+' '+employee.department+' '+employee.status+' '
-									+ employee.createddtm+' '+employee.createdby+' '+employee.updateddtm+ ' '+employee.updatedby+'</li>');
+		function(){
+                   $('#showAllEmployeebyStatus').click(function()
+                		   {
+	                        var status = $("#status").val();
+	                        $.ajax({
+	                        		url :"http://localhost:9090/apii/statushb1/"+status
+	                        	}).then(
+	                        			function(data) {			
+	                        			$.each(data,function(index,employee) {
+	                        				$('#empListbyStatus').append(
+	                        											'<li>'
+	                        												+employee.id+' '+
+	                        												employee.name+' '
+	                        												+employee.phoneno+' '
+	                        												+employee.department+' '
+	                        												+employee.status+' '
+	                        												+employee.createddtm+' '
+	                        												+employee.createdby+' '
+	                        												+employee.updateddtm+' '
+	                        												+employee.updatedby+'</li>');
 						})
 
 		})
@@ -103,19 +119,28 @@ $('#showAllEmployeebyStatus').click(function() {
 //show all Employee by employee id
 $(document).ready(
 		function() {
-$('#showAllEmployeebyId').click(function() {
-	var id = $("#id").val();
-	
-		$.ajax({
-			url :"http://localhost:9090/apii/eidhb1/"+id
-		}).then(
+               $('#showAllEmployeebyId').click(function() {
+	          var id = $("#id").val();
+	           $.ajax({
+			           url :"http://localhost:9090/apii/eidhb1/"+id
+			           }).then(
 		function(data) {			
-			
 			$.each(data,
 					function(index,employee) {
-							$('#empListbyId').append(
-									'<li>'+employee.id+' '+ employee.name+' '+employee.phoneno+' '+employee.department+' '+employee.status+' '
-									+ employee.createddtm+' '+employee.createdby+' '+employee.updateddtm+ ' '+employee.updatedby+'</li>');
+							$('#empListbyId').append
+							(
+									'<li>'
+									+employee.id+' '
+									+employee.name+' '
+									+employee.phoneno+' '
+									+employee.department+' '
+									+employee.status+' '
+									+employee.createddtm+' '
+									+employee.createdby+' '
+									+employee.updateddtm+' '
+									+employee.updatedby+
+									'</li>'
+						   );
 						})
 
 		})
@@ -137,8 +162,18 @@ $('#showAllEmployeebyName').click(
 			                   $.each(data,function(index,employee) 
 			                		   {
 					                     $('#empListbyName').append(
-									     '<li>'+employee.id+' '+ employee.name+' '+employee.phoneno+' '+employee.department+' '+employee.status+' '
-									      + employee.createddtm+' '+employee.createdby+' '+employee.updateddtm+ ' '+employee.updatedby+'</li>');
+					                    		 	'<li>'	
+					                    		 		+employee.id+' '
+					                    		 		+ employee.name+' '
+					                    		 		+employee.phoneno+' '
+					                    		 		+employee.department+' '
+					                    		 		+employee.status+' '
+					                    		 		+employee.createddtm+' '
+					                    		 		+employee.createdby+' '
+					                    		 		+employee.updateddtm+' '
+					                    		 		+employee.updatedby+
+					                    		 		'</li>'
+					                    		 		);
 						                }
 			                           )
 						       })
@@ -222,22 +257,22 @@ function formToJSON() {
 
 
 //delete
-$(document).ready(
-		          function() {
-                             $('#Countrytobedeletdbyname').click(function() 
-                            		 {
-                            	 		var cname = $("#cname").val();
-                            	 		$.ajax({
-                            	 				type: 'DELETE',
-                            	 				contentType: 'application/json',
-                            	 				url: 'http://localhost:9090/apii/deletebycountrynamehb1/'+cname,
-                            	 				dataType: "json",
-                            	 				data: formToJSONCountryUpdate(),
-                            	 				})
-                                    })
+$(document).ready(function()
+		{
+           $('#Countrytobedeletdbyname').click(function() 
+                            		            {
+                            	 				var cname = $("#cname").val();
+                            	 				$.ajax({
+                            	 						type: 'DELETE',
+                            	 						contentType: 'application/json',
+                            	 						url: 'http://localhost:9090/apii/deletebycountrynamehb1/'+cname,
+                            	 						dataType: "json",
+                            	 						data: formToJSONCountryUpdate(),
+                            	 					  });
+                            		            });
 	
-		          			}
-		          );
+		          
+		          });
 
 
 		
