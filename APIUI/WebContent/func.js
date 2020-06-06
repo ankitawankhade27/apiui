@@ -199,8 +199,8 @@ $(document).ready(
 								url: 'http://localhost:9090/apii/addemployeehb1',
 								dataType: "json",
 								data: formToJSON()
-								})
-					};
+								});
+					}
 	function formToJSON() 
 	{
 			return JSON.stringify(
@@ -256,23 +256,63 @@ function formToJSON() {
 		});
 
 
-//delete
-$(document).ready(function()
+//delete Country
+$(document).ready(
+		function()
 		{
-           $('#Countrytobedeletdbyname').click(function() 
-                            		            {
-                            	 				var cname = $("#cname").val();
-                            	 				$.ajax({
-                            	 						type: 'DELETE',
-                            	 						contentType: 'application/json',
-                            	 						url: 'http://localhost:9090/apii/deletebycountrynamehb1/'+cname,
+           $('#Countrytobedeletdbyname').click(
+        		   function() 
+                   {
+        			   var cname = $("#cname").val();
+        			   alert("country deleted Successfully ....");
+                          $.ajax
+                          (
+                        		  {
+                            	 						type: "DELETE",
+                            	 						contentType: "application/json",
+                            	 						url: "http://localhost:9090/apii/deletebycountrynamehb1/"+cname,
                             	 						dataType: "json",
-                            	 						data: formToJSONCountryUpdate(),
-                            	 					  });
-                            		            });
+                            	 						data: formToJSONCountryDeleteByName()
+                            	 }
+                        );
+                  
+        		   function formToJSONCountryDeleteByName() {
+	 					return JSON.stringify({
+	 						'cname': $('#cname').val()
+	 						});
+	 				}
+                   }
+	);
+		   });
 	
-		          
-		          });
+//delete Employeee
 
-
+$(document).ready(
+		function()
+		{
+           $('#EmployeeDeletedById').click(
+        		   function() 
+                   {
+        			   var eid = $("#eid").val();
+        			   alert("Employee deleted Successfully ....");
+                          $.ajax
+                          (
+                        		  {
+                            	 						type: "DELETE",
+                            	 						contentType: "application/json",
+                            	 						url: "http://localhost:9090/apii/deleteemployeebyidhb1/"+eid,
+                            	 						dataType: "json",
+                            	 						data: formToJSONEmployeeDeleteById()
+                            	 }
+                        );
+                  
+        		   function formToJSONEmployeeDeleteById() {
+	 					return JSON.stringify({
+	 						'id': $('#id').val()
+	 						});
+	 				}
+                   }
+	);
+		   });
 		
+
