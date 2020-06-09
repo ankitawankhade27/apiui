@@ -281,8 +281,7 @@ $(document).ready(
 	 						'cname': $('#cname').val()
 	 						});
 	 				}
-                   }
-	);
+                   });
 		   });
 	
 //delete Employeee
